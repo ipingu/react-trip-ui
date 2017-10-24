@@ -16,10 +16,9 @@ export const viewPlaces = id => {
   }
 }
 
-export const addPlace = (id, name, summary) => {
+export const addPlace = (name, summary) => {
   return {
     type: ADD_TRIP_PLACE,
-    id,
     name,
     summary
   }

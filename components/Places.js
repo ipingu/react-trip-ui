@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import PlaceArticle from './PlaceArticle'
+import PlaceForm from '../containers/PlaceForm'
+import MapComponent from './MapComponent'
 
 class Trip extends React.Component {
 
@@ -11,11 +13,13 @@ class Trip extends React.Component {
   render() {
     return (
       <div>
+      <MapComponent/>
+      <div id="container">
+        <AddPlace />
         {this.props.places.map((place) => (
-          <div key={place._id}>
-            <PlaceArticle name={place.name} summary={place.summary}/>
-          </div>
+          <PlaceArticle key={place.id} name={place.name} summary={place.summary}/>
         ))}
+      </div>
     </div>
     )
   }

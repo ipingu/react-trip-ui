@@ -1,8 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {addPlace} from '../actions'
+import React from 'react';
+import PropTypes from 'prop-types'
 
-let AddPlace = ({ dispatch }) => {
+const PlaceForm = (props) => {
     let name
     let summary
 
@@ -12,12 +11,10 @@ let AddPlace = ({ dispatch }) => {
           <input type="text" placeholder="Location" ref={node => {name = node}} />
           <textarea ref={node => {summary = node}}/>
           <input type="submit" id="postStory" value="Publish" onClick={e => {
-            dispatch(addPlace(name.value, name.value, summary.value))
+            props.addPlace(name.value, summary.value)
           }}/>
       </section>
   )
 }
 
-AddPlace = connect()(AddPlace)
-
-export default AddPlace;
+export default PlaceForm
