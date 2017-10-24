@@ -3,20 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App.js';
 require('./src/less/minimal.less');
 
+import  {fetchPlacesData} from './actions/places'
+
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import tripsApp from './reducers'
-import  {viewTrip} from './actions'
-//import createSagaMiddleware from 'redux-saga'
-//import {helloSaga} from './sagas'
+import configureStore from './store/';
 
-//const sagaMiddleware = createSagaMiddleware()
-const store = createStore(tripsApp)
-//sagaMiddleware.run(helloSaga)
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-const unsubscribe = store.subscribe(() =>
+const store = configureStore();
+store.subscribe(() =>
   console.log("State changed", store.getState())
 )
 
@@ -25,5 +19,3 @@ ReactDOM.render(
     <App />
   </Provider>,
  document.getElementById('app'));
-
-store.dispatch(viewTrip('59eb7c4c1079661e84418da8'))

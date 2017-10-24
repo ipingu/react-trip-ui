@@ -4,17 +4,28 @@ import PlaceArticle from './PlaceArticle'
 import AddPlace from '../containers/AddPlace'
 import MapComponent from './MapComponent'
 
-const Trip = ({ places }) => (
-  <div>
-    <MapComponent/>
-    <div id="container">
-      <AddPlace />
-      {places.map((place) => (
-        <PlaceArticle key={place.id} name={place.name} summary={place.summary}/>
-      ))}
+class Trip extends React.Component {
+
+  componentDidMount() {
+    console.log(this.props);
+    this.props.fetchPlaces();
+  }
+
+  render() {
+    return (
+      <div>
+      <MapComponent/>
+      <div id="container">
+        <AddPlace />
+        {this.props.places.map((place) => (
+          <PlaceArticle key={place.id} name={place.name} summary={place.summary}/>
+        ))}
+      </div>
     </div>
-  </div>
-)
+    )
+  }
+
+}
 
 Trip.propTypes = {
   id: PropTypes.string,

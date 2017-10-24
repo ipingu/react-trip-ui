@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import trip from './trip'
+import { places, placesFetchHasFailed, placesFetchIsLoading } from './places'
 
-const tripsApp = combineReducers({
-  trip
+export default combineReducers({
+  places,
+  placesFetchHasFailed,
+  placesFetchIsLoading
 })
-
-export default tripsApp
