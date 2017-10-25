@@ -13,7 +13,7 @@ class Trip extends React.Component {
       <div>
         {this.props.places.map((place) => (
           <div key={place._id}>
-            <PlaceArticle name={place.name} summary={place.summary}/>
+            <PlaceArticle place={place}/>
           </div>
         ))}
     </div>
@@ -23,10 +23,10 @@ class Trip extends React.Component {
 }
 
 Trip.propTypes = {
-  id: PropTypes.string,
+  _id: PropTypes.string,
   places: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       summary: PropTypes.string.isRequired
     }).isRequired

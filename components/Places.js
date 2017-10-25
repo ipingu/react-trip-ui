@@ -17,7 +17,7 @@ class Trip extends React.Component {
       <div id="container">
         <AddPlace />
         {this.props.places.map((place) => (
-          <PlaceArticle key={place.id} name={place.name} summary={place.summary}/>
+          <PlaceArticle key={place.id} name={place.name} summary={place.summary} start={place.start}/>
         ))}
       </div>
     </div>
@@ -27,12 +27,13 @@ class Trip extends React.Component {
 }
 
 Trip.propTypes = {
-  id: PropTypes.string,
+  _id: PropTypes.string,
   places: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      summary: PropTypes.string.isRequired
+      summary: PropTypes.string.isRequired,
+      start: PropTypes.instanceOf(Date)
     }).isRequired
   )
 }
