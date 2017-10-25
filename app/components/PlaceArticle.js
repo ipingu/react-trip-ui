@@ -7,7 +7,10 @@ const PlaceArticle = ({ key, place}) => (
     <div className="header">
       <div className="calendar">
         <span className="day">{moment(place.start).days()}</span>
-        <span className="month">{moment(place.start).format("MMM")}</span>
+        <span className="clean">
+          <span className="month">{moment(place.start).format("MMM").toLowerCase()}</span>
+          <span>{moment(place.start).format("YYYY").toLowerCase()}</span>
+        </span>
       </div>
       <h2>{place.name}</h2>
     </div>

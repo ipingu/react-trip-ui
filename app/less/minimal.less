@@ -28,6 +28,9 @@ License: GNU General Public License
 	// Site background
 	@site-bg:			#fff;
 
+	// Sidebar background
+	@sidebar-bg:		#1b2b2a;
+
 	// Header background
 	@header-bg:			transparent;
 
@@ -78,6 +81,9 @@ License: GNU General Public License
 	// Header padding
 	@header-padding:	20px 0;
 
+	// Sidebar width
+	@sidebar-width:		220px;
+
 	// main Wrapper width (effects your post width)
 	@container:			900px;
 
@@ -97,6 +103,12 @@ License: GNU General Public License
 /* styles
 -------------------------------------------------------------- */
 
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body,
 button,
 input,
@@ -107,11 +119,6 @@ select {
 	font-family: @body-font;
 	.font-size(@body-text-size);
 }
-
-body {
-  margin: 0.5em;
-}
-
 
 /* typography
 -------------------------------------------------------------- */
@@ -126,6 +133,7 @@ h5,
 h6 {
 	clear: both;
 	font-family: @heading-font;
+	color: @primary;
 }
 
 h1 {
@@ -155,11 +163,9 @@ hr {
 p {
 	margin-bottom: 1.5em;
 }
-ul, ol {
-	margin: 0 0 1.5em 3em;
-}
+
 ul {
-	list-style: disc;
+	list-style: none;
 }
 ol {
 	list-style: decimal;
@@ -655,26 +661,83 @@ input[type="submit"] {
 
 /** Custom display **/
 .calendar {
-	display: inline-block;
-	background-color: black;
-	color: white;
-	border-radius: 6px;
+    display: inline-block;
+    background-color: #343434;
+    color: white;
+    border-radius: 6px;
+	text-align: center;
 	
 	span {
-		display: block;
-		margin: 5px;
+		margin: 0 3px 0 5px;
 
 		&.day {
-			font-size: 54px;
-			line-height: 54px;
+			font-size: 2.6em;
 		}
 
 		&.month {
-			font-size: 34px;
-			text-align: center;
+			display: block;
+		}
+
+		&.clean {
+			display: inline-block;
+		}
+
+		> span {
+			font-size: 0.7em;
 		}
 	}
 }
+
+/** Menu */
+.flex-wrapper {
+	display: flex;
+	min-height: 100%;
+}
+  
+.sidebar {
+	position: absolute;
+	width: @sidebar-width;
+	background-color: @primary;
+	height: 100%;
+}
+
+.content {
+	flex: 1;
+	background: @site-bg;
+	transform: translate3d(0,0,0);
+	transition: all .3s;
+	padding: 20px 20px 0 20px;
+
+	&.isOpen {
+		margin-left: @sidebar-width;
+	}
+}
+
+/** Nav sidebar */
+.nav li a {
+	position: relative;
+	display: block;
+	padding: 15px 0 15px 15px;
+	font-size: 0.7em;
+	color: #eee;
+	border-bottom: 1px solid #222;
+	cursor: pointer;
+  }
+  
+  .nav li a:before {
+	position: absolute;
+	top: 19px;
+	left: 20px;
+  }
+  
+  .nav li a:hover {
+	background: #444;
+  }
+  
+  .nav li a.active {
+	box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
+	background: #444;
+  }
 
 
 /* Media Queries for responsivenessssssss
