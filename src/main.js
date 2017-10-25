@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
-require('./src/less/minimal.less');
+import App from './app.js';
+require('./less/minimal.less');
 
 import  {fetchPlacesData} from './actions/places'
 
