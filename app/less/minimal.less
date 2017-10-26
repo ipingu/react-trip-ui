@@ -709,6 +709,8 @@ input[type="submit"] {
 	padding: 20px 20px 0 20px;
 
 	&.isOpen {
+		// Use transform to overflow page width at the right
+		// transform: translate3d(@sidebar-width,0,0);
 		margin-left: @sidebar-width;
 	}
 }
