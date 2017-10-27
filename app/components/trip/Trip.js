@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import PlaceArticle from './PlaceArticle'
-import PlaceForm from '../containers/PlaceForm'
-import MapComponent from './MapComponent'
+import Place from './Place'
 
 class Trip extends React.Component {
 
@@ -10,16 +8,19 @@ class Trip extends React.Component {
     this.props.fetchPlaces();
   }
 
+  shouldComponentUpdate() {
+    console.log("Should update Trip", this.props.match.params.id);
+    return true;
+  }
+
   render() {
     return (
       <div>
-      <MapComponent/>
-      <div id="container">
-        <AddPlace />
         {this.props.places.map((place) => (
-          <PlaceArticle key={place.id} name={place.name} summary={place.summary} start={place.start}/>
+          <div key={place._id}>
+            <Place place={place}/>
+          </div>
         ))}
-      </div>
     </div>
     )
   }
@@ -32,8 +33,7 @@ Trip.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      summary: PropTypes.string.isRequired,
-      start: PropTypes.instanceOf(Date)
+      summary: PropTypes.string.isRequired
     }).isRequired
   )
 }

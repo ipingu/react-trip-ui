@@ -1,16 +1,11 @@
 import React from 'react'
-import VisibleTrip from '../containers/VisibleTrip';
-import PlaceFormContainer from '../containers/PlaceFormContainer';
-import Menu from './Menu'
+import Menu from './navigation/Menu'
+import Main from './Main'
 
 const Layout = () => (
     <div className='flex-wrapper'>
         <Menu />
-
-        <div className="content isOpen">
-            <PlaceFormContainer />
-            <VisibleTrip />
-        </div>
+        <Main />
     </div>
 )
 

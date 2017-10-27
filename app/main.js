@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app.js';
-require('./less/minimal.less');
-
-import  {fetchPlacesData} from './actions/places'
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import configureStore from './store/';
+import minimal from './less/minimal.less'
+import configureStore from './store/'
+import App from './app.js'
 
 const store = configureStore();
 store.subscribe(() =>
@@ -16,6 +14,8 @@ store.subscribe(() =>
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
  document.getElementById('app'));

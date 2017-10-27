@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-const PlaceArticle = ({ key, place}) => (
+const Place = ({ key, place}) => (
   <article className="place-summary">
     <div className="header">
       <div className="calendar">
@@ -18,11 +18,11 @@ const PlaceArticle = ({ key, place}) => (
   </article>
 )
 
-PlaceArticle.propTypes = 
+Place.propTypes = 
   PropTypes.shape({
     name: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
     start: PropTypes.instanceOf(Date)
   })
 
-export default PlaceArticle;
+export default Place;

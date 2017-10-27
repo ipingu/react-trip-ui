@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 
-const PlaceForm = (props) => {
+const EditPlace = (props) => {
     let name
     let summary
 
@@ -17,4 +17,4 @@ const PlaceForm = (props) => {
   )
 }
 
-export default PlaceForm
+export default EditPlace

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {placeCreateData} from '../actions/place'
-import PlaceForm from '../components/PlaceForm'
+import EditPlace from '../components/form/EditPlace'
 
 const mapStateToProps = state => {
   return {
@@ -18,6 +18,6 @@ const mapDispatchToProps = dispatch => {
 const PlaceFormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlaceForm)
+)(EditPlace)
 
 export default PlaceFormContainer;
