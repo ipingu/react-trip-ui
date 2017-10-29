@@ -1,12 +1,22 @@
 import React from 'react'
+import UserMenu from '../containers/UserMenu'
 import Menu from './navigation/Menu'
 import Main from './Main'
 
-const Layout = () => (
-    <div className='flex-wrapper'>
-        <Menu />
-        <Main />
-    </div>
-)
+class Layout extends React.Component {
+
+    componentDidMount() {
+        this.props.loadData();
+    }
+
+    render() {
+        return (
+            <div className='flex-wrapper'>
+                <Menu trips={this.props.trips}/>
+                <Main />
+            </div>
+        )
+    }
+}
 
 export default Layout;

@@ -1,25 +1,9 @@
-export const VIEW_TRIP = 'VIEW_TRIP'
-export const VIEW_TRIP_PLACES = 'VIEW_TRIP_PLACES'
-export const ADD_TRIP_PLACE = 'ADD_TRIP_PLACE'
-
-export const viewTrip = id => {
-  return {
-    type: VIEW_TRIP,
-    id
-  }
-}
-
-export const viewPlaces = id => {
-  return {
-    type: VIEW_TRIP_PLACES,
-    id
-  }
-}
-
-export const addPlace = (name, summary) => {
-  return {
-    type: ADD_TRIP_PLACE,
-    name,
-    summary
+export const generateAction = (type, ...argNames) => {
+  return function (...args) {
+    let action = { type }
+    argNames.forEach((arg, index) => {
+      action[argNames[index]] = args[index]
+    })
+    return action
   }
 }

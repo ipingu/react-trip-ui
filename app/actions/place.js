@@ -1,28 +1,12 @@
+import { generateAction } from './index'
+
 export const PLACE_CREATE_SUCCESS = 'PLACE_CREATE_SUCCESS'
 export const PLACE_CREATE_PROGRESS = 'PLACE_CREATE_PROGRESS'
 export const PLACE_CREATE_FAILURE = 'PLACE_CREATE_FAILURE'
 
-export const placeCreateFailure = bool => {
-  return {
-    type: PLACE_CREATE_FAILURE,
-    hasFailed: bool
-  }
-}
-
-export const placeCreateProgress = bool => {
-  console.log("Progre", bool);
-  return {
-    type: PLACE_CREATE_PROGRESS,
-    isLoading: bool
-  }
-}
-
-export const placeCreateSuccess = place => {
-  return {
-    type: PLACE_CREATE_SUCCESS,
-    place
-  }
-}
+export const placeCreateFailure = generateAction(PLACE_CREATE_FAILURE, 'hasFailed');
+export const placeCreateProgress = generateAction(PLACE_CREATE_PROGRESS, 'isLoading');
+export const placeCreateSuccess = generateAction(PLACE_CREATE_SUCCESS, 'place');
 
 export const placeCreateData = (name,summary) => {
   return (dispatch) => {

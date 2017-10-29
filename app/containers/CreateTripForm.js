@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import EditTrip from '../components/form/EditTrip'
-import { tripCreateData } from '../actions'
+import { tripCreateData } from '../actions/trip'
  
 const mapStateToProps = (state) => ({
   //myForm: state.forms.f.myForm

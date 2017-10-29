@@ -1,4 +1,4 @@
-import { PLACE_CREATE_SUCCESS, PLACE_CREATE_PROGRESS, PLACE_CREATE_FAILURE } from '../actions/place'
+import { PLACE_CREATE_SUCCESS, PLACE_CREATE_PROGRESS, PLACE_CREATE_FAILURE } from '../../actions/place'
 
  export const placeCreateHasFailed = (state = false, action) => {
     switch (action.type) {

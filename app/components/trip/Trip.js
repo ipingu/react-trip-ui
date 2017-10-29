@@ -4,25 +4,32 @@ import Place from './Place'
 
 class Trip extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchPlaces();
-  }
-
-  shouldComponentUpdate() {
-    console.log("Should update Trip", this.props.match.params.id);
-    return true;
+  componentWillReceiveProps() {
+    console.log("Should fetch data for trip", this.props.match.params.id);
   }
 
   render() {
-    return (
-      <div>
-        {this.props.places.map((place) => (
-          <div key={place._id}>
-            <Place place={place}/>
-          </div>
-        ))}
-    </div>
-    )
+    if (this.props.hasFailed) {
+      return ( <p>API FAILURE</p> )
+    } else if (this.props.trip ) {
+      let places = this.props.trip.places == undefined || this.props.trip.places.length == 0 ? null : (
+        <div>
+          {this.props.trip.places.map((place) => (
+            <div key={place._id}>
+              <Place place={place}/>
+            </div>
+          ))}
+        </div>
+      )
+      return (
+        <div>
+          <h2>{this.props.trip.name}</h2>
+          {places}
+        </div>
+      )
+    } else {
+      return ( <p>No trip</p>)
+    }
   }
 
 }
