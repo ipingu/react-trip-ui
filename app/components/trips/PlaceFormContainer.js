@@ -1,17 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {placeCreateData} from '../actions/place'
-import EditPlace from '../components/form/EditPlace'
+import { actionCreators as tripsActionCreators } from '../../trips/trips'
+import EditPlace from './EditPlace'
 
 const mapStateToProps = state => {
   return {
-    activeTrip: state.app.activeTrip
+    activeTrip: state.trips.app.activeTrip
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit: (tripId, place) => dispatch(placeCreateData(tripId, place))
+    handleSubmit: (tripId, place) => dispatch(tripsActionCreators.doCreatePlace(tripId, place))
   }
 }
 

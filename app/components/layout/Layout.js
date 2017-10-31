@@ -1,6 +1,6 @@
 import React from 'react'
-import UserMenu from '../containers/UserMenu'
-import Menu from './navigation/Menu'
+import UserMenu from '../navigation/UserMenu'
+import Menu from '../navigation/Menu'
 import Main from './Main'
 
 class Layout extends React.Component {

@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Control, Form, actions } from 'react-redux-form'
+import { actionCreators as tripsActionCreators } from '../../trips/trips'
+
 
 const EditTrip = (props) => {
-
   return (
     <Form model="tripModel" onSubmit={(trip) => props.handleSubmit(trip)}>
       <Control type="date" model="tripModel.start" id="tripModel.start" />
@@ -15,4 +17,14 @@ const EditTrip = (props) => {
   )
 }
 
-export default EditTrip
+const mapStateToProps = (state) => ({
+})
+ 
+const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (trip) => dispatch(tripsActionCreators.doCreateTrip(trip))
+})
+ 
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditTrip)

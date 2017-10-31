@@ -1,49 +1,21 @@
 import { createReducer, combineReducers } from 'redux'
 import { createForms } from 'react-redux-form';
 
-import { trips } from './entities/trips'
-import { placeCreateHasFailed, placeCreateIsLoading } from './app/createPlace'
-import { tripFetchHasFailed, tripFetchIsLoading } from './app/fetchTrip'
-import { tripsFetchHasFailed, tripsFetchIsLoading } from './app/fetchTrips'
-import { tripCreateHasFailed, tripCreateIsLoading } from './app/createTrip'
-import { activeTrip } from './app/activeTrip'
+import tripReducer from '../trips/trips'
 import { initialTripFormState, initialPlaceFormState } from './forms'
 
-/*
-
-entities :
-  - trips
-    - completed
-    - places
-app :
-  - activeTrip
-  - api
-    - fetchTrip
-      - progress
-      - failure
-    - createTrip
-      ...
-ui :
-  - showMenu
-
-*/
-
-export const entitiesReducers = combineReducers({ trips });
-export const appReducers = combineReducers({
-  tripsFetchHasFailed,
-  tripsFetchIsLoading,
-  tripFetchHasFailed,
-  tripFetchIsLoading,
-  placeCreateHasFailed,
-  placeCreateIsLoading,
-  tripCreateHasFailed,
-  tripCreateIsLoading,
-  activeTrip
-});
+export const generateAction = (type, ...argNames) => {
+  return function (...args) {
+    let action = { type }
+    argNames.forEach((arg, index) => {
+      action[argNames[index]] = args[index]
+    })
+    return action
+  }
+}
 
 export default combineReducers({
-  entities: entitiesReducers,
-  app: appReducers,
+  trips: tripReducer,
   ...createForms({
     tripModel: initialTripFormState,
     placeModel: initialPlaceFormState

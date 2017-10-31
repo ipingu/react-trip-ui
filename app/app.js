@@ -1,5 +1,5 @@
 import React from 'react'
-import UserLayout from './containers/UserLayout'
+import UserLayout from './components/layout/UserLayout'
 
 class App extends React.Component {
 

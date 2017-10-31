@@ -1,21 +1,20 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { tripsFetchData } from '../actions/trip'
-import Menu from '../components/navigation/Menu'
+import { actionCreators as tripsActionCreators } from '../../trips/trips'
+import Menu from './Menu'
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    trips: state.entities.trips,
-    isLoading: state.app.tripsFetchIsLoading,
-    hasFailed: state.app.tripsFetchHasFailed
+    trips: state.trips.entities,
+    isLoading: state.trips.app.getTrips.isLoading,
+    hasFailed: state.trips.app.getTrips.hasFailed
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadData: () => dispatch(tripsFetchData())
+    loadData: () => dispatch(tripsActionCreators.doGetTrips)
   }
 }
 

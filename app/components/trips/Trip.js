@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import Place from './Place'
-import PlaceFormContainer from '../../containers/PlaceFormContainer'
+import PlaceFormContainer from './PlaceFormContainer'
 
 class Trip extends React.Component {
 
