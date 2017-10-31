@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import minimal from './less/minimal.less'
 import configureStore from './store/'
 import App from './app.js'
+import history from './store/history'
+
 
 const store = configureStore();
 store.subscribe(() =>
@@ -14,8 +16,8 @@ store.subscribe(() =>
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>,
  document.getElementById('app'));

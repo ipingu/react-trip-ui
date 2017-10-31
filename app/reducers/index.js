@@ -7,7 +7,7 @@ import { tripFetchHasFailed, tripFetchIsLoading } from './app/fetchTrip'
 import { tripsFetchHasFailed, tripsFetchIsLoading } from './app/fetchTrips'
 import { tripCreateHasFailed, tripCreateIsLoading } from './app/createTrip'
 import { activeTrip } from './app/activeTrip'
-import { initialTripFormState } from './forms'
+import { initialTripFormState, initialPlaceFormState } from './forms'
 
 /*
 
@@ -45,6 +45,7 @@ export default combineReducers({
   entities: entitiesReducers,
   app: appReducers,
   ...createForms({
-    tripModel: initialTripFormState
+    tripModel: initialTripFormState,
+    placeModel: initialPlaceFormState
   })
 })

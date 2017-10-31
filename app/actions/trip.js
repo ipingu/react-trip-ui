@@ -1,5 +1,6 @@
 import { generateAction } from './index'
 import axios from 'axios'
+import history from '../store/history'
 
 export const TRIP_CREATE_SUCCESS = 'TRIP_CREATE_SUCCESS'
 export const TRIP_CREATE_PROGRESS = 'TRIP_CREATE_PROGRESS'
@@ -15,6 +16,8 @@ export const TRIPS_FETCH_FAILURE = 'TRIPS_FETCH_FAILURE'
 
 export const TRIP_SET_ACTIVE = 'TRIP_SET_ACTIVE'
 
+export const tripSetActive = generateAction(TRIP_SET_ACTIVE, 'id');
+
 export const tripCreateFailure = generateAction(TRIP_CREATE_FAILURE, 'hasFailed');
 export const tripCreateProgress = generateAction(TRIP_CREATE_PROGRESS, 'isLoading');
 export const tripCreateSuccess = generateAction(TRIP_CREATE_SUCCESS, 'trip');
@@ -27,16 +30,25 @@ export const tripsFetchFailure = generateAction(TRIPS_FETCH_FAILURE, 'hasFailed'
 export const tripsFetchProgress = generateAction(TRIPS_FETCH_PROGRESS, 'isLoading');
 export const tripsFetchSuccess = generateAction(TRIPS_FETCH_SUCCESS, 'trips');
 
+export const goto = (target) => {
+  return (dispatch) => {
+    console.log("Change url", target);
+    history.push(target);
+  }
+}
+
 export const tripCreateData = (model) => {
   return (dispatch) => {
     dispatch(tripCreateProgress(true));
 
-    axios.post('http://localhost:3001/trips', model)
+    axios
+      .post('http://localhost:3001/trips', model)
       .then(response => {
-        dispatch(tripCreateProgress(false));
         dispatch(tripCreateSuccess(response.data));
+        dispatch(goto('/trip/view/' + response.data._id));
       })
       .catch((e) => {
+        console.log(e);
         dispatch(tripCreateFailure(true));
       });
 
@@ -47,13 +59,12 @@ export const tripFetchData = (tripId) => {
   return (dispatch) => {
     dispatch(tripFetchProgress(true));
 
-    fetch('http://localhost:3001/trips/' + tripId)
+    axios('http://localhost:3001/trips/' + tripId)
       .then(response => {
         dispatch(tripFetchProgress(false));
-        return response;
+        dispatch(tripFetchSuccess(response.data.trip));
+        dispatch(tripSetActive(response.data.trip));
       })
-      .then(response => response.json())
-      .then(trip => dispatch(tripFetchSuccess(trip)))
       .catch((e) => dispatch(tripFetchFailure(true)));
   }
 }

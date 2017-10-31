@@ -1,20 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Control, Form, actions } from 'react-redux-form'
 
 const EditPlace = (props) => {
-    let name
-    let summary
-
     return (
-      <section className="form">
-        <h4>Where are you ?</h4>
-          <input type="text" placeholder="Location" ref={node => {name = node}} />
-          <textarea ref={node => {summary = node}}/>
-          <input type="submit" id="postStory" value="Publish" onClick={e => {
-            props.addPlace(name.value, summary.value)
-          }}/>
-      </section>
-  )
+      <Form model="placeModel" onSubmit={(place) => props.handleSubmit(props.activeTrip, place)}>
+      <Control.text model="placeModel.name" id="placeModel.name" placeholder="Location"/>
+      <Control.textarea model="placeModel.summary" id="placeModel.summary"/>
+      <input type="submit" value="Save location" />
+    </Form>
+    )
 }
 
 export default EditPlace

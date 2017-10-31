@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 })
  
 const mapDispatchToProps = (dispatch) => ({
-  submit: (trip) => dispatch(tripCreateData(trip))
+  handleSubmit: (trip) => dispatch(tripCreateData(trip))
 })
  
 export default connect(

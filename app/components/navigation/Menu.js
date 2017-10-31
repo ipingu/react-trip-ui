@@ -9,7 +9,7 @@ class Menu extends React.Component {
         let tripsLinks = null;
         if (this.props.trips.length > 0) {
             tripsLinks = this.props.trips.map((trip) => (
-                <MenuLink key={trip.id} target={'/trip/view/' + trip._id} name={trip.name} />
+                <MenuLink key={trip._id} target={'/trip/view/' + trip._id} name={trip.name} />
             ));
         }
 

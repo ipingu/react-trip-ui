@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import Place from './Place'
+import PlaceFormContainer from '../../containers/PlaceFormContainer'
 
 class Trip extends React.Component {
-
-  componentWillReceiveProps() {
-    console.log("Should fetch data for trip", this.props.match.params.id);
-  }
 
   render() {
     if (this.props.hasFailed) {
@@ -21,9 +18,11 @@ class Trip extends React.Component {
           ))}
         </div>
       )
+
       return (
         <div>
           <h2>{this.props.trip.name}</h2>
+          {!this.props.trip.isCompleted && <PlaceFormContainer />}
           {places}
         </div>
       )
