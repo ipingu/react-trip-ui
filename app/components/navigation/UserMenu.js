@@ -7,14 +7,16 @@ import Menu from './Menu'
 const mapStateToProps = state => {
   return {
     trips: state.trips.entities,
-    isLoading: state.trips.app.getTrips.isLoading,
-    hasFailed: state.trips.app.getTrips.hasFailed
+    isLoading: state.trips.app.tripsGet.isLoading,
+    hasFailed: state.trips.app.tripsGet.hasFailed,
+    showMaximum: 5,
+    showAllTrips: state.trips.app.seeAllTrips
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadData: () => dispatch(tripsActionCreators.doGetTrips)
+    handleSeeAllTripsClick : tripsActionCreators.doSeeAllTrips
   }
 }
 

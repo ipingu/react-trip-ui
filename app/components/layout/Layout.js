@@ -1,6 +1,6 @@
 import React from 'react'
 import UserMenu from '../navigation/UserMenu'
-import Menu from '../navigation/Menu'
+import Menu from '../navigation/UserMenu'
 import Main from './Main'
 
 class Layout extends React.Component {
@@ -12,7 +12,7 @@ class Layout extends React.Component {
     render() {
         return (
             <div className='flex-wrapper'>
-                <Menu trips={this.props.trips}/>
+                <UserMenu />
                 <Main />
             </div>
         )

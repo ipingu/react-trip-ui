@@ -21,8 +21,7 @@ const Place = ({ key, place}) => (
 Place.propTypes = 
   PropTypes.shape({
     name: PropTypes.string.isRequired,
-    summary: PropTypes.string.isRequired,
-    start: PropTypes.instanceOf(Date)
+    summary: PropTypes.string.isRequired
   })
 
 export default Place;

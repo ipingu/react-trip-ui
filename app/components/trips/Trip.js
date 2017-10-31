@@ -1,23 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types'
-import Place from './Place'
-import PlaceFormContainer from './PlaceFormContainer'
+import React from "react";
+import PropTypes from "prop-types";
+import Place from "./Place";
+import PlaceFormContainer from "./PlaceFormContainer";
 
 class Trip extends React.Component {
-
   render() {
     if (this.props.hasFailed) {
-      return ( <p>API FAILURE</p> )
-    } else if (this.props.trip ) {
-      let places = this.props.trip.places == undefined || this.props.trip.places.length == 0 ? null : (
-        <div>
-          {this.props.trip.places.map((place) => (
-            <div key={place._id}>
-              <Place place={place}/>
-            </div>
-          ))}
-        </div>
-      )
+      return <p>API FAILURE</p>;
+    } else if (this.props.isLoading) {
+      return <p>Loading</p>;
+    } else if (this.props.trip) {
+      let places =
+        this.props.trip.places == undefined ||
+        this.props.trip.places.length == 0 ? null : (
+          <div>
+            {this.props.trip.places.map(place => (
+              <div key={place._id}>
+                <Place place={place} />
+              </div>
+            ))}
+          </div>
+        );
 
       return (
         <div>
@@ -25,12 +28,11 @@ class Trip extends React.Component {
           {!this.props.trip.isCompleted && <PlaceFormContainer />}
           {places}
         </div>
-      )
+      );
     } else {
-      return ( <p>No trip</p>)
+      return <p>No trip</p>;
     }
   }
-
 }
 
 Trip.propTypes = {
@@ -42,7 +44,6 @@ Trip.propTypes = {
       summary: PropTypes.string.isRequired
     }).isRequired
   )
-}
-
+};
 
 export default Trip;
