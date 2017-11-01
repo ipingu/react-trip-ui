@@ -23,11 +23,11 @@ class Trip extends React.Component {
         );
 
       return (
-        <div>
-          <h2>{this.props.trip.name}</h2>
+        <article className="trip">
+          <h1>{this.props.trip.name}</h1>
           {!this.props.trip.isCompleted && <PlaceFormContainer />}
           {places}
-        </div>
+        </article>
       );
     } else {
       return <p>No trip</p>;

@@ -8,7 +8,7 @@ class TripSummary extends React.Component {
     const { trip } = this.props;
 
     return (
-      <article class="summary">
+      <article className="summary">
         <h2>{trip.name}</h2>
         <p>{trip.summary}</p>
       </article>

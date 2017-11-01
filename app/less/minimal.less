@@ -18,6 +18,8 @@ License: GNU General Public License
 // Main
 @primary: #343434;
 @secondary: #007998;
+@tertiary: #7a7a7a;
+@quadri: wheat;
 
 // Shades
 @dark: #101010;
@@ -29,7 +31,8 @@ License: GNU General Public License
 @site-bg: #fff;
 
 // Sidebar background
-@sidebar-bg: #1b2b2a;
+@sidebar-bg-primary: rgba(50, 145, 127, 0.7803921568627451);
+@sidebar-bg-secondary: rgba(50, 145, 127, 0.7803921568627451);
 
 // Header background
 @header-bg: transparent;
@@ -56,7 +59,7 @@ License: GNU General Public License
 @site-text-size: 16;
 
 // Body text size
-@body-text-size: 14;
+@body-text-size: 12;
 
 // Title text size
 @title-text-size: 20;
@@ -65,7 +68,7 @@ License: GNU General Public License
 @site-name-color: @grey;
 
 // Site heading color
-@headinng-color: #404040;
+@heading-color: #404040;
 
 // Site Text color
 @text-color: #787878;
@@ -115,7 +118,6 @@ select {
   margin: 0;
   background: @site-bg;
   font-family: @body-font;
-  .font-size(@body-text-size);
 }
 
 /* typography
@@ -322,19 +324,22 @@ section {
   background: @post-bg;
   padding-left: @post-padding;
   padding-right: @post-padding;
-  margin-bottom: 40px;
-  border-bottom: 1px solid @border-color;
+
+  & + & {
+    padding-top: 20px;
+    border-top: 1px solid @border-color;
+  }
 }
 
 article {
   .title {
-    color: @headinng-color;
+    color: @heading-color;
     .font-size(@title-text-size);
     font-weight: 700;
 
     a {
       text-decoration: none;
-      color: @headinng-color;
+      color: @heading-color;
 
       &:hover {
         color: @secondary;
@@ -460,30 +465,6 @@ h3#comments {
 
 // Jetpack
 
-.comment-meta {
-  font-size: (@body-text-size - 6px);
-  margin-bottom: 10px;
-}
-
-.comment-subscription-form,
-.comment-subscription-form {
-  margin-bottom: 0;
-  font-size: (@body-text-size - 4px);
-}
-
-#respond {
-  margin-bottom: (@margin * 2);
-
-  > h3 {
-    font-size: (@body-text-size - 2px);
-    margin-bottom: 20px;
-  }
-
-  form label {
-    color: @light-grey;
-  }
-} // respond
-
 footer {
   text-align: center;
   padding-bottom: 40px;
@@ -559,24 +540,34 @@ html[xmlns] .clearfix {
   outline: none;
 }
 
-.form {
-  padding-bottom: 40px;
+form {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 500px;
+
+  input + label {
+    margin-left: 30px;
+  }
+
+  label {
+    color: @light-grey;
+    font-size: @body-text-size - 1px;
+    min-width: 50px;
+    display: inline-block;
+  }
 }
 
 input[type="text"],
 input[type="password"],
 input[type="date"] {
-  display: block;
   box-sizing: border-box;
   margin-bottom: 20px;
-  padding: 4px;
-  width: 300px;
+  padding-top: 4px;
   height: 32px;
   border: none;
   border-bottom: 1px solid @secondary;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 15px;
   transition: 0.2s ease;
 
   &:focus {
@@ -586,10 +577,15 @@ input[type="date"] {
   }
 }
 
+input[type="text"],
 textarea {
   width: 100%;
-  height: 150px;
+}
+
+textarea {
+  height: 200px;
   border: 1px solid @secondary;
+  margin-top: 15px;
   &:focus {
     border: 2px solid @secondary;
     transition: 0.2s ease;
@@ -598,15 +594,15 @@ textarea {
 
 input[type="submit"] {
   margin-top: 12px;
-  width: 120px;
-  height: 32px;
-  background: @primary;
+  background: @off-white;
+  color: @grey;
   border: none;
-  border-radius: 2px;
-  color: #fff;
+  border-radius: 3px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   transition: 0.1s ease;
+  padding: 12px;
+  border: 1px solid @light-grey;
   cursor: pointer;
 
   &:hover,
@@ -625,9 +621,16 @@ input[type="submit"] {
 /** Map style */
 #map {
   width: 100%;
-  height: 250px;
-  border: 2px solid @border-color;
+  height: 400px;
+  margin-left: 20px;
   margin-bottom: 0.5em;
+}
+
+.trip {
+  h1 {
+    color: @light-grey;
+    border-bottom: 10px solid @quadri;
+  }
 }
 
 .place-summary {
@@ -679,7 +682,7 @@ input[type="submit"] {
 .sidebar {
   position: absolute;
   width: @sidebar-width;
-  background-color: @primary;
+  background-color: @sidebar-bg-primary;
   height: 100%;
 }
 
@@ -693,7 +696,7 @@ input[type="submit"] {
   &.isOpen {
     // Use transform to overflow page width at the right
     // transform: translate3d(@sidebar-width,0,0);
-    margin-left: @sidebar-width;
+    margin-left: @sidebar-width + 30px;
   }
 }
 
@@ -704,7 +707,6 @@ input[type="submit"] {
   padding: 15px 0 15px 15px;
   font-size: 0.7em;
   color: #eee;
-  border-bottom: 1px solid #222;
   cursor: pointer;
 }
 
@@ -715,7 +717,7 @@ input[type="submit"] {
 }
 
 .nav li a:hover {
-  background: #444;
+  background: @sidebar-bg-secondary;
 }
 
 .nav li a.active {
@@ -724,9 +726,17 @@ input[type="submit"] {
 }
 
 .nav li.hidden {
-	display: none;
+  display: none;
 }
 
+/** FLEX RULES **/
+.flex.split {
+  display: flex;
+  align-items: center;
+  & > * {   
+    flex: 1;
+  }
+}
 /* Media Queries for responsivenessssssss
 -------------------------------------------------------------- */
 
