@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Place from "./Place";
-import PlaceFormContainer from "./PlaceFormContainer";
+import EditPlace from "./EditPlace";
 
 class Trip extends React.Component {
   render() {
@@ -25,7 +25,7 @@ class Trip extends React.Component {
       return (
         <article className="trip">
           <h1>{this.props.trip.name}</h1>
-          {!this.props.trip.isCompleted && <PlaceFormContainer />}
+          {!this.props.trip.isCompleted && <EditPlace />}
           {places}
         </article>
       );

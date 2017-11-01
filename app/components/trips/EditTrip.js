@@ -8,7 +8,7 @@ import MapComponent from "../map/MapComponent";
 const EditTrip = props => {
   return (
     <div>
-      <h2>Planning a new trip ?</h2>
+      <h2>Planning a trip ?</h2>
       <div className="flex split">
         <Form model="tripModel" onSubmit={trip => props.handleSubmit(trip)}>
           <div className="field">
