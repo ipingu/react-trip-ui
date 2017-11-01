@@ -201,7 +201,6 @@ const activeTripReducer = (state = null, action) => {
 };
 
 const entitiesReducer = (state = [], action) => {
-  console.log("trips reducer", action);
   switch (action.type) {
     case TRIPS_GET_SUCCESS:
       return applyGetTripsSuccess(state, action);
