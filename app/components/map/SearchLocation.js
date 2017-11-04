@@ -45,7 +45,7 @@ const SearchLocation = compose(
       bounds={props.bounds}
       onPlacesChanged={props.onPlacesChanged}
     >
-    <Control.text model="tripModel.name" id="tripModel.name" />
+    <Control.text model="tripModel.location" id="tripModel.location" />
     </StandaloneSearchBox>    
   </div>
 ));

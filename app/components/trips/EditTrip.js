@@ -18,11 +18,13 @@ const EditTrip = props => {
             <label>Where ?</label>
             <SearchLocation onPlaceSelection={props.handlePlaceSelection}/>
           </div>
-
           <div className="field">
-            <label>Du</label>
+            <Control type="text" model="tripModel.name" id="tripModel.name" placeholder="Trip title"/>
+          </div>
+          <div className="field">
+            <label>From</label>
             <Control type="date" model="tripModel.start" id="tripModel.start" />
-            <label>Au</label>
+            <label>To</label>
             <Control type="date" model="tripModel.end" id="tripModel.end" />
           </div>
           <div className="field">

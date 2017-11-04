@@ -7,7 +7,9 @@ class TripsList extends React.Component {
 
     return (
       <ul className="nav">
-        {trips.map(trip => <TripSummary trip={trip} />)}
+        {trips.map(trip =>
+          <TripSummary key={trip._id} trip={trip} />
+        )}
       </ul>
     );
   }

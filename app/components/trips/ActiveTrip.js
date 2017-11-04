@@ -2,21 +2,22 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { actionCreators as tripsActionCreators } from "../../trips/trips";
-import Trip from "./Trip";
+import TripLayout from "./TripLayout";
 
 class ActiveTrip extends React.Component {
-  
+ 
+  componentWillMount() {
+    console.log(this.props);
+    this.props.setActiveTrip(this.props.match.params.id);
+  }
+
   componentWillReceiveProps(newProps) {
-    if (
-      this.props.trip == undefined ||
-      newProps.match.params.id != this.props.trip._id
-    ) {
-      this.props.setActiveTrip(newProps.match.params.id);
-    }
+    console.log("Set active trip");
+
   }
 
   render() {
-    return <Trip {...this.props} />;
+    return <TripLayout {...this.props} />;
   }
 }
 

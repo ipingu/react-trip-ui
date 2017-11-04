@@ -23,11 +23,13 @@ class Trip extends React.Component {
         );
 
       return (
-        <article className="trip">
-          <h1>{this.props.trip.name}</h1>
-          {!this.props.trip.isCompleted && <EditPlace />}
+        <div>
+          <article className="trip">
+            <h1>{this.props.trip.name}</h1>
+            <p>{this.props.trip.summary}</p>
+          </article>
           {places}
-        </article>
+        </div>
       );
     } else {
       return <p>No trip</p>;
@@ -35,15 +37,5 @@ class Trip extends React.Component {
   }
 }
 
-Trip.propTypes = {
-  _id: PropTypes.string,
-  places: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      summary: PropTypes.string.isRequired
-    }).isRequired
-  )
-};
 
 export default Trip;

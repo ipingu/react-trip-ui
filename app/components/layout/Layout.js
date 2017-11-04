@@ -1,7 +1,6 @@
 import React from 'react'
-import UserMenu from '../navigation/UserMenu'
-import Menu from '../navigation/UserMenu'
 import Main from './Main'
+import Header from './Header'
 
 class Layout extends React.Component {
 
@@ -11,9 +10,12 @@ class Layout extends React.Component {
 
     render() {
         return (
-            <div className='flex-wrapper'>
-                <UserMenu />
-                <Main />
+            <div>
+                <Header />
+
+                <div className='flex-wrapper'>
+                    <Main />
+                </div>
             </div>
         )
     }
