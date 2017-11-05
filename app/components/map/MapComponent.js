@@ -15,19 +15,8 @@ import {
   DirectionsRenderer,
   InfoWindow
 } from "react-google-maps";
-import { MAP } from "react-google-maps/lib/constants";
 
 const MapComponent = compose(
-  withStateHandlers(
-    () => ({
-      isOpen: false
-    }),
-    {
-      onToggleOpen: ({ isOpen }) => () => ({
-        isOpen: !isOpen
-      })
-    }
-  ),
   withProps({
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyACo1v3VDvckZOtTuXI5XmVYIuRP30xKXc&v=3.exp&libraries=geometry,drawing,places",
@@ -58,28 +47,10 @@ const MapComponent = compose(
   })
 )(props => (
   <div>
-    <GoogleMap ref={props.onMapMounted}>
-      <Marker
-        position={{ lat: 41.85, lng: -87.65 }}
-        onClick={props.onToggleOpen}
-      >
-        {props.isOpen && (
-          <InfoWindow onCloseClick={props.onToggleOpen}>
-            <div>
-              <span>Santa Clara</span>
-              <br />
-              <span>Recommandation : 9/10</span>
-              <p>
-                Enorme coup de coeur sur cette ville, grace au cheval d or qui
-                mange du pain en dormant.
-              </p>
-              <span>Voir les 18 photos</span>
-              <br />
-              <span>Add to wish list</span>
-            </div>
-          </InfoWindow>
-        )}
-      </Marker>
+    <GoogleMap ref={props.onMapMounted}
+    defaultCenter={{  lat: 0, lng: 0 }}
+    zoom={1}>
+   
 
       {props.directions && <DirectionsRenderer directions={props.directions} />}
     </GoogleMap>

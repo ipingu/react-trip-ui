@@ -10,10 +10,10 @@ import StandaloneSearchBox from "react-google-maps/lib/components/places/Standal
 
 const EditTrip = props => {
   return (
-    <div>
-      <h2>Planning a trip ?</h2>
       <div className="flex split">
-        <Form model="tripModel" onSubmit={trip => props.handleSubmit(trip)}>
+        <div>
+        <Form model="tripModel" className="center" onSubmit={trip => props.handleSubmit(trip)}>
+           <h2>Planning a trip ?</h2>
           <div className="field">
             <label>Where ?</label>
             <SearchLocation onPlaceSelection={props.handlePlaceSelection}/>
@@ -35,9 +35,9 @@ const EditTrip = props => {
           </div>
           <input type="submit" value="Create trip" />
         </Form>
+        </div>
         <MapComponent />
       </div>
-    </div>
   );
 };
 

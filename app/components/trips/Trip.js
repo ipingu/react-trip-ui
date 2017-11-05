@@ -23,8 +23,8 @@ class Trip extends React.Component {
         );
 
       return (
-        <div>
-          <article className="trip">
+        <div className="trip">
+          <article className="summary">
             <h1>{this.props.trip.name}</h1>
             <p>{this.props.trip.summary}</p>
           </article>

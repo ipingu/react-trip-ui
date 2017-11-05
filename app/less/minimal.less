@@ -16,8 +16,8 @@ License: GNU General Public License
 // -----------------------
 
 // Main
-@primary: #343434;
-@secondary: #007998;
+@primary: #f1a737;
+@secondary: #364672;
 @tertiary: #7a7a7a;
 @quadri: wheat;
 
@@ -35,7 +35,7 @@ License: GNU General Public License
 @sidebar-bg-secondary: rgba(50, 145, 127, 0.7803921568627451);
 
 // Header background
-@header-bg: transparent;
+@header-bg: #364672;
 
 // Post Background
 @post-bg: transparent;
@@ -74,7 +74,7 @@ License: GNU General Public License
 @text-color: #787878;
 
 // Link colors
-@link-color: @secondary;
+@link-color: #f1a737;
 
 // Site Structure
 // ---------------------
@@ -221,23 +221,6 @@ a:hover,
 a:focus,
 a:active {
   color: fade(@link-color, 50%);
-}
-
-/* Alignment */
-.alignleft {
-  display: inline;
-  float: left;
-  margin-right: 1.5em;
-}
-.alignright {
-  display: inline;
-  float: right;
-  margin-left: 1.5em;
-}
-.aligncenter {
-  clear: both;
-  display: block;
-  margin: 0 auto;
 }
 
 /* Header
@@ -475,9 +458,10 @@ html[xmlns] .clearfix {
 }
 
 form {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  max-width: 500px;
+
+  h2 {
+    margin-bottom: 30px;
+  }
 
   input + label {
     margin-left: 30px;
@@ -555,32 +539,87 @@ form {
 
 /** Map style */
 #map {
-  width: 100%;
-  height: 400px;
-  margin-left: 50px;
-  margin-bottom: 0.5em;
+  border: 2px solid #ddd;
+  padding: 7px;
+  border-radius: 5px;
+  max-height: 500px;
+  max-width: 530px;
 }
 
-.trip {
-    padding-bottom: 100px;
+.trip-enriched {
+  display: flex;
+
+  .metadata, .trip {   
+    flex: 1;
+    margin-top: 50px;
+  }
+
+  .trip,.metadata {
+    margin-left: 50px;
+  }
+
+  .trip .summary {
+    padding-bottom: 100px;  
+  }
+
+  .timeline {
+    border-left: 8px solid @primary;
+    width: 100px;
+    padding-top: 96px;
+    
+    button {
+      border: none;
+      border-bottom: 5px solid @primary;
+      color: @primary;
+      margin: 0;
+      min-width: 85px;
+      height: 30px;
+      font-size: 16px;
+      text-align: right;
+      font-weight: bold;
+      
+      & + button {
+        margin-top: 20px;
+      }
+    }
+  }
+  
 }
+
+.diaporama {
+  display: flex;
+  vertical-align: middle;
+  flex-wrap: wrap;
+
+  li {
+    flex: 1 1 200px;
+    margin: 0.5em;
+    text-align: center;
+  }
+}
+
+.center {
+  margin: auto;
+}
+
 
 .place-summary {
-  .header,
-  h2 {
+  .header, h2 {
     display: inline-block;
+  }
 
-    h2 {
-      margin-left: 20px;
-    }
+  p {
+    text-align: justify;
+    text-indent: 1em;
+    line-height: 1.5em;
   }
 }
 
 /** Custom display **/
 .calendar {
   display: inline-block;
-  background-color: #343434;
-  color: white;
+  background-color: #fceeda;
+  color: #f1a737;
   border-radius: 6px;
   text-align: center;
 
@@ -606,31 +645,51 @@ form {
 }
 
 header {
-  border-bottom: 1px solid @quadri;
+  background-color: @header-bg;
+  display: flex;
 
-  > * {
+  > div {
     margin: 20px;
+    align-self: center;
+
+    &.actions {
+      &.search {
+        flex-grow: 1;
+      }
+
+      &.user {
+        margin-left: auto;
+      }
+    }
   }
 
   input {
     padding: 15px;
-    width: 50%;
+    width: 100%;
+    opacity: 0.9;
+    border: none;
     font-size: 16px;
+    border-radius: 25px;
   }
 
   button {
     padding: 15px;
     font-size: 16px;
-    border: 1px solid 
+    border: 1px solid black;
   }
 
  a {
-    padding: 14px;
+    margin: 20px;
     border: none;
     border-radius: 2px;
     font-family: "Roboto", sans-serif;
-    border: 1px solid #7a7a7a;
+    font-size: 20px;
+    
+    .fa {
+      vertical-align: middle;
+    }
   }
+
 }
 
 /** Menu */
@@ -651,7 +710,6 @@ header {
   background: @site-bg;
   transform: translate3d(0, 0, 0);
   transition: all 0.3s;
-  padding: 50px 40px 0 40px;
 /* 
   &.isOpen {
     // Use transform to overflow page width at the right
@@ -693,38 +751,12 @@ header {
   display: none;
 }
 
-.diaporama {
-  display: flex;
-  vertical-align: middle;
-  flex-wrap: wrap;
-
-  li {
-    flex: 1 1 200px;
-    margin: 0.5em;
-    text-align: center;
-  }
-}
 
 /** FLEX RULES **/
 .flex.split {
   display: flex;
-  & > * {   
-    flex: 1;
+
+  & > div + div {
+    margin-left: 50px;
   }
 }
-/* Media Queries for responsivenessssssss
--------------------------------------------------------------- */
-
-@media (max-width: 767px) {
-  header {
-    padding: 0;
-
-    .gravatar {
-      float: none;
-    }
-
-    hgroup {
-      width: 100%;
-    }
-  } //header
-} // max-width 767px
