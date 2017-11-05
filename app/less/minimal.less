@@ -546,6 +546,28 @@ form {
   max-width: 530px;
 }
 
+
+.horizontal-timeline {
+  width: 100%;
+  border-top: 5px solid @quadri;
+
+  button {
+    border: none;
+    color: @quadri;
+    min-width: 150px;
+    height: 30px;
+    font-size: 16px;
+    margin-left: 5px;
+    text-align: center;
+    font-weight: bold;
+
+    & + button {
+      border-left: 5px solid @quadri;
+    }
+  }
+
+}
+
 .trip-enriched {
   display: flex;
 
@@ -651,8 +673,13 @@ header {
   > div {
     margin: 20px;
     align-self: center;
-
+  
     &.actions {
+
+      a {
+        margin-left: 50px;
+      }
+
       &.search {
         flex-grow: 1;
       }
