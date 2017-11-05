@@ -19,7 +19,7 @@ License: GNU General Public License
 @primary: #f1a737;
 @secondary: #364672;
 @tertiary: #7a7a7a;
-@quadri: wheat;
+@quadri: #958e81;
 
 // Shades
 @dark: #101010;
@@ -132,7 +132,7 @@ h5,
 h6 {
   clear: both;
   font-family: @heading-font;
-  color: @primary;
+  color: @quadri;
 }
 
 h1 {
@@ -549,7 +549,7 @@ form {
 
 .horizontal-timeline {
   width: 100%;
-  border-top: 5px solid @quadri;
+  border-top: 5px solid @primary;
 
   button {
     border: none;
@@ -562,7 +562,11 @@ form {
     font-weight: bold;
 
     & + button {
-      border-left: 5px solid @quadri;
+      border-left: 5px solid @primary;
+    }
+
+    .fa {
+      font-size: 18px;
     }
   }
 
@@ -570,18 +574,15 @@ form {
 
 .trip-enriched {
   display: flex;
+  min-height: 50vh;
+  margin-top: 100px;
 
-  .metadata, .trip {   
+  .metadata, .trip-summary {
     flex: 1;
-    margin-top: 50px;
-  }
-
-  .trip,.metadata {
-    margin-left: 50px;
   }
 
   .trip .summary {
-    padding-bottom: 100px;  
+    padding-bottom: 100px;
   }
 
   .timeline {
@@ -605,13 +606,24 @@ form {
       }
     }
   }
-  
+}
+
+.place-enriched {
+  display: flex;
+
+  .metadata, .place-summary {
+    flex: 1;
+  }
+
+  .metadata {
+    margin-top: 100px;
+  }
 }
 
 .diaporama {
   display: flex;
-  vertical-align: middle;
   flex-wrap: wrap;
+  margin-left: 50px;
 
   li {
     flex: 1 1 200px;
@@ -626,9 +638,21 @@ form {
 
 
 .place-summary {
-  .header, h2 {
-    display: inline-block;
+  min-height: 100vh;
+
+  .header {
+    min-height: 100px;
+
+    &, h2 {
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: 2.3em;
+    }
   }
+
+  
 
   p {
     text-align: justify;
@@ -640,16 +664,17 @@ form {
 /** Custom display **/
 .calendar {
   display: inline-block;
-  background-color: #fceeda;
-  color: #f1a737;
+  background-color: @off-white;
+  color: @tertiary;
   border-radius: 6px;
   text-align: center;
+  margin-right: 16px;
 
   span {
     margin: 0 3px 0 5px;
 
     &.day {
-      font-size: 2.6em;
+      font-size: 2.3em;
     }
 
     &.month {
@@ -737,6 +762,7 @@ header {
   background: @site-bg;
   transform: translate3d(0, 0, 0);
   transition: all 0.3s;
+  margin-left: 40px;
 /* 
   &.isOpen {
     // Use transform to overflow page width at the right
