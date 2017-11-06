@@ -5,7 +5,7 @@ import EditTrip from '../trips/EditTrip'
 import UserTripsList from '../trips/UserTripsList'
 
 const Main = () => (
-    <div className="content isOpen">
+    <div>
         <Switch>
             <Route exact path='/' render={() => (
                 <div>
@@ -16,8 +16,6 @@ const Main = () => (
             <Route path='/trips/user' component={UserTripsList}/>
             <Route path='/trip/view/:id' component={ActiveTrip}/>
         </Switch>
-        
-
     </div>
 )
 

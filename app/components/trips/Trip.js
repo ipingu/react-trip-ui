@@ -16,7 +16,7 @@ class Trip extends React.Component {
           this.props.trip.places.length == 0 ? null : (
             <div>
               {this.props.trip.places.map(place => (
-                <Place key={place._id} place={place} />
+                  <Place key={place._id} place={place} />
               ))}
             </div>
           );

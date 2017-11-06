@@ -1,21 +1,15 @@
 import React from "react";
 import Trip from "./Trip";
-import FontAwesome from "react-fontawesome";
+import Timeline from "./Timeline";
 
 class TripLayout extends React.Component {
     render() {
         return (
             <div>
-                <div className="horizontal-timeline">
-                    <button>
-                        <FontAwesome name="home" /></button>
-                    <button>Tokyo</button>
-                    <button>Myiajima</button>
-                    <button>Tokyo Le retour</button>
-                    <button>Shanghai</button>
-                    <button>Hiroshima</button>
+                <Timeline {...this.props.trip}/>
+                <div className="content">
+                    <Trip {...this.props} />
                 </div>
-                <Trip {...this.props} />
             </div>
         )
     }

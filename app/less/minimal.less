@@ -549,21 +549,21 @@ form {
 
 .horizontal-timeline {
   width: 100%;
-  border-top: 5px solid @primary;
+  position: sticky;
+  top: 0px;
+  background-color: @off-white;
 
-  button {
-    border: none;
+  a {
+    display: inline-block;
     color: @quadri;
-    min-width: 150px;
-    height: 30px;
+    background-color: @off-white;
+    border: none;
+    font-weight: bold;
     font-size: 16px;
+    line-height: 38px;
+    min-width: 150px;
     margin-left: 5px;
     text-align: center;
-    font-weight: bold;
-
-    & + button {
-      border-left: 5px solid @primary;
-    }
 
     .fa {
       font-size: 18px;
@@ -631,6 +631,23 @@ form {
     text-align: center;
   }
 }
+
+.block.trip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  li {
+    display: flex; 
+    background-color: @off-white;
+    height: 230px;
+    width: 200px;
+    margin: 20px;
+    justify-content: center; 
+    align-items: center;  
+  }
+}
+
 
 .center {
   margin: auto;
@@ -757,22 +774,12 @@ header {
   height: 100%;
 }
 
-.content {
-  flex: 1;
-  background: @site-bg;
-  transform: translate3d(0, 0, 0);
-  transition: all 0.3s;
-  margin-left: 40px;
-/* 
-  &.isOpen {
-    // Use transform to overflow page width at the right
-    // transform: translate3d(@sidebar-width,0,0);
-    margin-left: @sidebar-width + 30px;
-  } */
-}
-
 .trip-layout {
   flex: 1;
+}
+
+.content {
+  margin: 20px;
 }
 
 /** Nav sidebar */

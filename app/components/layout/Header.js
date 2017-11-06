@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import FontAwesome from "react-fontawesome";
 
 const Header = () => (
+
     <header>
         <div className="actions primary">
             <Link to={"/feeds"}>
@@ -21,7 +22,9 @@ const Header = () => (
                 <FontAwesome name="user" size="2x"/>
             </Link>
         </div>
+
     </header>
+
 )
 
 export default Header;
