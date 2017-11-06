@@ -12,7 +12,8 @@ class TripsList extends React.Component {
         {trips.map(trip =>
           <li key={trip._id}>
             <Link to={"/trip/view/" + trip._id}>
-              {trip.name}
+              <img src="http://idata.over-blog.com/0/58/67/94/belles-images/Rio/Christthe-Redeemer-in-Rio-001.jpg" />
+              <h4>{trip.name}</h4>
             </Link>
           </li>
         )}
