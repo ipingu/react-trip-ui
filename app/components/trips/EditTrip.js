@@ -10,7 +10,7 @@ import StandaloneSearchBox from "react-google-maps/lib/components/places/Standal
 
 const EditTrip = props => {
   return (
-      <div className="flex split">
+      <div className="add-place">
         <div>
         <Form model="tripModel" className="center" onSubmit={trip => props.handleSubmit(trip)}>
            <h2>Planning a trip ?</h2>

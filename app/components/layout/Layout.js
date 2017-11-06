@@ -13,7 +13,7 @@ class Layout extends React.Component {
             <div>
                 <Header />
 
-                <div className='flex-wrapper'>
+                <div>
                     <Main />
                 </div>
             </div>
